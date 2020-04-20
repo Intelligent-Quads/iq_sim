@@ -7,6 +7,8 @@ sudo apt install x-term
 
 ## boat sim
 
+[boat setup](boat_setup.md)
+
 ```
 cd ~/catkin_ws/src/iq_sim/scripts
 ./boatSetup.sh

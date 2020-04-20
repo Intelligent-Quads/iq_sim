@@ -31,7 +31,7 @@
         <visual name='visual'>
           <pose>0 0 0 0 0 0</pose>
           <geometry>
-            <cylinder>
+            <cylinder>0944
               <radius>0.025</radius>
               <length>0.025</length>
             </cylinder>
