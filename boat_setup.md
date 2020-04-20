@@ -44,8 +44,7 @@ Reload `~/.bashrc`:
 
 Run SITL (Software In The Loop) once to set params:
 ```
-cd ~/ardupilot/ArduCopter
-sim_vehicle.py -w
+sim_vehicle.py -v APMrover2
 ```
 
 # Intalling QGroundControl 
@@ -83,8 +82,7 @@ chmod +x ./QGroundControl.AppImage
 ## Run SITL and connect with Q Ground
 
 ```
-cd ~/ardupilot/ArduCopter/
-sim_vehicle.py
+sim_vehicle.py -v APMrover2
 ```
 
 # Installing Gazebo and ArduPilot Plugin
