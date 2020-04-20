@@ -294,16 +294,13 @@ cd src
 git clone --recursive https://github.com/PX4/sitl_gazebo.git
 ```
 
-Create a build folder in the top level of your repository:
 
-```bash
-mkdir build
-```
 
 Navigate into the build directory and invoke CMake from it:
 
 ```bash
 cd ~/src/sitl_gazebo
+mkdir build
 cd build
 cmake ..
 ```
