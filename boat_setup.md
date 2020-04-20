@@ -212,6 +212,7 @@ source ~/.bashrc
 ```
 cd ~/catkin_ws/src
 git clone https://github.com/Intelligent-Quads/iq_sim.git
+cd iq_sim
 git checkout boat
 ```
 Our repository should now be copied to `~/catkin_ws/src/iq_sim/` (don't run this line. This is just saying that if you browse in the file manager, you will see those folders).
