@@ -5,9 +5,17 @@
     <include>
       <uri>model://sun</uri>
     </include>
-    <include>
+<!--     <include>
       <uri>model://water_level</uri>
+    </include> -->
+    <include>
+      <uri>model://ocean</uri>
     </include>
+    <model name="beer">
+      <include>
+        <uri>model://beer</uri>
+      </include>
+    </model>
     <model name="boat">
     <pose>0 0 0 0 0 0.4</pose>
      <include>
@@ -15,7 +23,7 @@
       </include>
                <!-- add new camera -->
       <link name='camera'>
-        <pose>0 -0.01 2.0 2.0944 0 1.57</pose>
+        <pose>0 -0.01 2.0 1.91986 0 1.57</pose>
         <inertial>
           <pose>0 0 0 0 0 0</pose>
           <mass>0.1</mass>
@@ -105,7 +113,7 @@
 
 
      <physics name='default_physics' default='0' type='ode'>
-      <gravity>0 0 -9.8066</gravity>
+<!--       <gravity>0 0 -9.8066</gravity>
       <ode>
         <solver>
           <type>quick</type>
@@ -123,7 +131,21 @@
       <max_step_size>0.004</max_step_size>
       <real_time_factor>1</real_time_factor>
       <real_time_update_rate>0</real_time_update_rate>
-      <magnetic_field>6.0e-6 2.3e-5 -4.2e-5</magnetic_field>
+      <magnetic_field>6.0e-6 2.3e-5 -4.2e-5</magnetic_field> -->
+       <ode>
+        <solver>
+          <type>quick</type>
+          <iters>100</iters>
+          <sor>1.0</sor>
+        </solver>
+        <constraints>
+          <cfm>0.0</cfm>
+          <erp>0.9</erp>
+          <contact_max_correcting_vel>0.1</contact_max_correcting_vel>
+          <contact_surface_layer>0.0</contact_surface_layer>
+        </constraints>
+      </ode>
+      <real_time_update_rate>-1</real_time_update_rate>
     </physics>
   </world>
 </sdf>
