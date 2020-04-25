@@ -11,8 +11,14 @@
     <include>
       <uri>model://ocean</uri>
     </include>
+    <model name="terrain">
+
+      <include>
+        <uri>model://winding_valley_heightmap</uri>
+      </include>
+    </model>
     <model name="boat">
-    <pose>0 0 0 0 0 0.4</pose>
+    <pose>-20 0 0 0 0 0.4</pose>
      <include>
         <uri>model://boat</uri>
       </include>
