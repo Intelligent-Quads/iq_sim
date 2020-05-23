@@ -35,3 +35,13 @@ second terminal
 ```
 sim_vehicle.py -v APMrover2 -f gazebo-rover  -m --mav10 --console -L Viridian
 ```
+
+## Swarm Boats
+
+```
+sim_vehicle.py -v APMrover2 -f gazebo-rover  -m --mav10 --console -L Viridian -I0 --out=tcpin:0.0.0.0:8100 
+```
+
+```
+sim_vehicle.py -v APMrover2 -f gazebo-rover  -m --mav10 --console -L Viridian -I1 --out=tcpin:0.0.0.0:8110 
+```
