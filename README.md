@@ -1,6 +1,14 @@
 # IQ Simulations
 
-This repo hosts gazebo worlds for various drone scenarios and various drone configurations. This Repo is specifically designed to work with the Ardupilot control system, and utilizes the ardupilot gazebo plugin to allow the ardupilot control software to interface and control the model drone in gazebo.  
+This repo hosts gazebo worlds for various drone scenarios and various drone configurations. This Repo is specifically designed to work with the Ardupilot control system, and utilizes the ardupilot gazebo plugin to allow the ardupilot control software to interface and control the model drone in gazebo. 
+
+## IQ Tutorials
+This Repo is part of the Intelligent Quads Software Development tutorial series. Please take a look at the following resources to learn more about how to use this repository.
+
+[Intelligent Quads Text Tutorials](https://github.com/Intelligent-Quads/iq_tutorials)
+
+[Intelligent Quads Video Tutorials](https://www.youtube.com/channel/UCuZy0c-uvSJglnZfQC0-uaQ)
+
 
 ## Dependencies 
 
@@ -16,6 +24,11 @@ Installing x-term is recommended as it allows the ardupilot sitl interface to ru
 ```
 sudo apt install x-term
 ```
+
+## Drone Simulations 
+
+
+
 
 ## Boat Simulation
 
