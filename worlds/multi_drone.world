@@ -78,21 +78,75 @@
       <uri>model://sun</uri>
     </include>
     <model name="drone1">
-      <pose> 10 0 0 0 0 0</pose>
+      <pose> 0 0 0 0 0 0</pose>
       <include>
         <uri>model://drone1</uri>
       </include>
     </model>
     <model name="drone2">
-      <pose> 12 0 0 0 0 0</pose>
+      <pose> 0 2 0 0 0 0</pose>
       <include>
         <uri>model://drone2</uri>
       </include>
     </model>
     <model name="drone3">
-      <pose> 14 0 0 0 0 0</pose>
+      <pose> 2 0 0 0 0 0</pose>
       <include>
         <uri>model://drone3</uri>
+      </include>
+    </model>
+    <model name="drone4">
+      <pose> 2 2 0 0 0 0</pose>
+      <include>
+        <uri>model://drone4</uri>
+      </include>
+    </model>
+    <model name="drone5">
+      <pose> 6 0 0 0 0 0</pose>
+      <include>
+        <uri>model://drone5</uri>
+      </include>
+    </model>
+    <model name="drone6">
+      <pose> 6 2 0 0 0 0</pose>
+      <include>
+        <uri>model://drone6</uri>
+      </include>
+    </model>
+    <model name="drone7">
+      <pose> 8 0 0 0 0 0</pose>
+      <include>
+        <uri>model://drone7</uri>
+      </include>
+    </model>
+    <model name="drone8">
+      <pose> 8 2 0 0 0 0</pose>
+      <include>
+        <uri>model://drone8</uri>
+      </include>
+    </model>
+    <model name="drone9">
+      <pose> 12 0 0 0 0 0</pose>
+      <include>
+        <uri>model://drone9</uri>
+      </include>
+    </model>
+    <model name="drone10">
+      <pose> 12 2 0 0 0 0</pose>
+      <include>
+        <uri>model://drone10</uri>
+      </include>
+    </model>
+    <model name="drone11">
+      <pose> 14 0 0 0 0 0</pose>
+      <include>
+        <uri>model://drone11</uri>
+      </include>
+    </model>
+    <model name="drone12">
+      <pose> 14 2 0 0 0 0</pose>
+      <include>
+        <uri>model://drone12</uri>
       </include>
     </model>
 
