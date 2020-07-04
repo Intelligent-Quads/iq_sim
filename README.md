@@ -27,7 +27,7 @@ sudo apt install x-term
 
 ## Drone Simulations 
 
-![runway world](docs/imgs/runway_world.png)
+![runway world](docs/imgs/runway.jpg)
 
 This repo contains a couple different gazebo worlds containing various ardupilot drone configurations. The worlds are listed below 
 
