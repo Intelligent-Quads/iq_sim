@@ -84,24 +84,24 @@
       </include>
     </model>
     <model name="drone2">
-      <pose> 0 2 0 0 0 0</pose>
+      <pose> 0 -5 0 0 0 1.57</pose>
       <include>
         <uri>model://drone2</uri>
       </include>
     </model>
     <model name="drone3">
-      <pose> 2 0 0 0 0 0</pose>
+      <pose> 5 -5 0 0 0 3.14</pose>
       <include>
         <uri>model://drone3</uri>
       </include>
     </model>
     <model name="drone4">
-      <pose> 2 2 0 0 0 0</pose>
+      <pose> 5 0 0 0 0 4.71</pose>
       <include>
         <uri>model://drone4</uri>
       </include>
     </model>
-    <model name="drone5">
+    <!-- <model name="drone5">
       <pose> 6 0 0 0 0 0</pose>
       <include>
         <uri>model://drone5</uri>
@@ -148,7 +148,7 @@
       <include>
         <uri>model://drone12</uri>
       </include>
-    </model>
+    </model> -->
 
   </world>
 </sdf>
