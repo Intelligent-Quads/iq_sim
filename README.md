@@ -66,3 +66,40 @@ second terminal
 ```
 sim_vehicle.py -v APMrover2 -f gazebo-rover  -m --mav10 --console -L Viridian
 ```
+
+
+## IQ_SIM Models
+
+
+### drone1-12
+This repo hosts a few helpful gazebo models you can use to build upon. Included in this repo are 12 drones in which contain the ardupilot plugin. each ardupilot plugin is staggered such that you can simulated multiple unique aircraft using ardupilot's SITL. For more information please see the iq_tutorial on [ardupilot drone swarming](https://github.com/Intelligent-Quads/iq_tutorials/blob/master/docs/swarming_ardupilot.md)
+
+### drone_with_lidar
+
+example drone that has a 2d lidar attached. The lidar plugin publishes a `sensor_msgs/LaserScan` ROS msg containing return data
+
+topics
+```
+/spur/laser/scan
+```
+
+![drone_with_lidar](docs/imgs/drone_with_lidar.png)
+
+### drone_with_sonar
+
+Example drone with 4 sonars attached in each direction. Each sonar publishes a `sensor_msgs/Range` ROS msg containing range data.
+
+topics 
+```
+/drone1/sensor/sonar/back
+/drone1/sensor/sonar/front
+/drone1/sensor/sonar/left
+/drone1/sensor/sonar/right
+```
+![drone_with_sonar](docs/imgs/drone_with_sonar.png)
+
+### drone_with_camera 
+
+Example drone with a forward facing camera. The camera published a 'sensor_msgs/Image' ROS msg which can be used to view or do image processing on. 
+
+![drone_with_camera](docs/imgs/drone_with_camera.png)
