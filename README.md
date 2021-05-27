@@ -4,7 +4,7 @@ This repo hosts gazebo worlds for various drone scenarios and various drone conf
 
 ## Community Discord Server
 
-Come be a part of the growing community of drone application developers! Join the the conversation in our [discord](https://discord.gg/xZjXaAf).
+Come be a part of the growing community of drone application developers! Join the conversation in our [discord](https://discord.gg/xZjXaAf).
 
 ## IQ Tutorials
 This Repo is part of the Intelligent Quads Software Development tutorial series. Please take a look at the following resources to learn more about how to use this repository.
@@ -16,24 +16,24 @@ This Repo is part of the Intelligent Quads Software Development tutorial series.
 
 ## Dependencies 
 
-take a look at these tutorials to setup ardupilot, gazebo and the ardupilot gazebo plugin 
+Take a look at these tutorials to setup ardupilot, gazebo and the ardupilot gazebo plugin 
 
-[Installing Ardupilot and MAVProxy](https://github.com/Intelligent-Quads/iq_tutorials/blob/master/Installing_Ardupilot.md)
+[Installing Ardupilot and MAVProxy](https://github.com/Intelligent-Quads/iq_tutorials/blob/master/docs/Installing_Ardupilot.md)
 
-[Installing QGroundControl](https://github.com/Intelligent-Quads/iq_tutorials/blob/master/installing_qgc.md)
+[Installing QGroundControl](https://github.com/Intelligent-Quads/iq_tutorials/blob/master/docs/installing_qgc.md)
 
-[Installing Gazebo and ArduPilot Plugin](https://github.com/Intelligent-Quads/iq_tutorials/blob/master/installing_gazebo_arduplugin.md)
+[Installing Gazebo and ArduPilot Plugin](https://github.com/Intelligent-Quads/iq_tutorials/blob/master/docs/installing_gazebo_arduplugin.md)
 
 Installing x-term is recommended as it allows the ardupilot sitl interface to run in a terminal that will cleanly close when closing you sitl instance
 ```
-sudo apt install x-term
+sudo apt install xterm
 ```
 
 ## Drone Simulations 
 
 ![runway world](docs/imgs/runway.jpg)
 
-This repo contains a couple different gazebo worlds containing various ardupilot drone configurations. The worlds are listed below 
+This repo contains a couple different gazebo worlds containing various ardupilot drone configurations. The worlds are listed below
 
 - `droneOnly.world` - simple gazebo world containing only a single drone
 - `runway.world` - simple gazebo world containing only a single drone on a runway
@@ -54,7 +54,7 @@ For more information, take a look at the corresponding tutorials [here](https://
 
 ## Boat Simulation
 
-Recently I have been experimenting with Ardurover for controlling an autonomous boat. Bellow shows the steps for installing for boat simulation. If you have already installed for quadcopter simulation, then most of the boat installation should already be completed. 
+Recently I have been experimenting with Ardurover for controlling an autonomous boat. Below shows the steps for installing for boat simulation. If you have already installed for quadcopter simulation, then most of the boat installation should already be completed. 
 
 [boat setup](docs/boat_setup.md)
 
@@ -66,7 +66,7 @@ First terminal
 ```
 roslaunch iq_sim boat.launch
 ```
-second terminal
+Second terminal
 ```
 sim_vehicle.py -v APMrover2 -f gazebo-rover  -m --mav10 --console -L Viridian
 ```
@@ -76,11 +76,11 @@ sim_vehicle.py -v APMrover2 -f gazebo-rover  -m --mav10 --console -L Viridian
 
 
 ### drone1-12
-This repo hosts a few helpful gazebo models you can use to build upon. Included in this repo are 12 drones in which contain the ardupilot plugin. each ardupilot plugin is staggered such that you can simulated multiple unique aircraft using ardupilot's SITL. For more information please see the iq_tutorial on [ardupilot drone swarming](https://github.com/Intelligent-Quads/iq_tutorials/blob/master/docs/swarming_ardupilot.md)
+This repo hosts a few helpful gazebo models you can use to build upon. Included in this repo are 12 drones which contain the ardupilot plugin. Each ardupilot plugin is staggered such that you can simulate multiple unique aircraft using ardupilot's SITL. For more information please see the iq_tutorial on [ardupilot drone swarming](https://github.com/Intelligent-Quads/iq_tutorials/blob/master/docs/swarming_ardupilot.md)
 
 ### drone_with_lidar
 
-example drone that has a 2d lidar attached. The lidar plugin publishes a `sensor_msgs/LaserScan` ROS msg containing return data
+Example drone that has a 2d lidar attached. The lidar plugin publishes a `sensor_msgs/LaserScan` ROS msg containing return data.
 
 topics
 ```
@@ -104,6 +104,6 @@ topics
 
 ### drone_with_camera 
 
-Example drone with a forward facing camera. The camera published a 'sensor_msgs/Image' ROS msg which can be used to view or do image processing on. 
+Example drone with a forward facing camera. The camera published a `sensor_msgs/Image` ROS msg which can be used to view or do image processing on. 
 
 ![drone_with_camera](docs/imgs/drone_with_camera.png)
