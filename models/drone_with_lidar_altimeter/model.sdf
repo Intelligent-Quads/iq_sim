@@ -1,13 +1,13 @@
 <?xml version='1.0'?>
 <sdf version="1.6" >
-  <model name="drone_with_sonar">
+  <model name="drone_with_lidar_altimeter">
     <include>
       <uri>model://iris_base</uri>
     </include>
 
           <!-- Sonar Sensor -->
       <link name="base_sonar_front">
-        <pose>0.28 0 .2 0 1.57 0</pose>
+        <pose>0.03 0 .15 0 1.57 0</pose>
         <collision name="sonar_collision">
           <geometry>
             <box>
@@ -24,7 +24,7 @@
           </geometry>
         </visual>
         <inertial>
-          <mass>0.1</mass>
+          <mass>0.001</mass>
           <inertia>
             <ixx>0.001</ixx>
             <ixy>0</ixy>
@@ -247,7 +247,7 @@
         <cmd_min>-2.5</cmd_min>
         <jointName>iris::rotor_0_joint</jointName>
         <multiplier>838</multiplier>
-        <controlVelocitySlowdownSim>1</controlVelocitySlowdownSim>
+        <controlVelocitySlowdownSim>0</controlVelocitySlowdownSim>
       </control>
       <control channel="1">
         <type>VELOCITY</type>
@@ -261,7 +261,7 @@
         <cmd_min>-2.5</cmd_min>
         <jointName>iris::rotor_1_joint</jointName>
         <multiplier>838</multiplier>
-        <controlVelocitySlowdownSim>1</controlVelocitySlowdownSim>
+        <controlVelocitySlowdownSim>0</controlVelocitySlowdownSim>
       </control>
       <control channel="2">
         <type>VELOCITY</type>
@@ -275,7 +275,7 @@
         <cmd_min>-2.5</cmd_min>
         <jointName>iris::rotor_2_joint</jointName>
         <multiplier>-838</multiplier>
-        <controlVelocitySlowdownSim>1</controlVelocitySlowdownSim>
+        <controlVelocitySlowdownSim>0</controlVelocitySlowdownSim>
       </control>
       <control channel="3">
         <type>VELOCITY</type>
@@ -289,7 +289,7 @@
         <cmd_min>-2.5</cmd_min>
         <jointName>iris::rotor_3_joint</jointName>
         <multiplier>-838</multiplier>
-        <controlVelocitySlowdownSim>1</controlVelocitySlowdownSim>
+        <controlVelocitySlowdownSim>0</controlVelocitySlowdownSim>
       </control>
     </plugin>
 

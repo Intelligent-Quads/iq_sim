@@ -9,6 +9,7 @@ project(iq_sim)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   roscpp
+  mavros
   std_msgs
 )
 
@@ -196,3 +197,6 @@ include_directories(
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+
+add_executable(range_finder_plugin src/mavlink_range_finder_plugin.cpp)
+target_link_libraries(range_finder_plugin ${catkin_LIBRARIES})

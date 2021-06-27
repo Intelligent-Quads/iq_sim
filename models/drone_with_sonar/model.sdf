@@ -63,7 +63,7 @@
              <gaussianNoise>0.005</gaussianNoise>
              <alwaysOn>true</alwaysOn>
              <updateRate>50</updateRate>
-             <topicName>drone1/sensor/sonar/front</topicName>
+             <topicName>/mavros/distance_sensor/front_sub</topicName>
              <frameName>base_sonar_front</frameName>
              <radiation>INFRARED</radiation>
              <fov>0.2967</fov>
@@ -145,7 +145,7 @@
              <gaussianNoise>0.005</gaussianNoise>
              <alwaysOn>true</alwaysOn>
              <updateRate>50</updateRate>
-             <topicName>drone1/sensor/sonar/left</topicName>
+             <topicName>/mavros/distance_sensor/rangefinder_sub</topicName>
              <frameName>base_sonar_left</frameName>
              <radiation>INFRARED</radiation>
              <fov>0.2967</fov>

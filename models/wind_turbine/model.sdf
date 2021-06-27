@@ -1,0 +1,47 @@
+<sdf version="1.5">
+  <model name="my_model">
+    
+    <!-- <size>10 155 170</size> -->
+    <static>true</static>
+    <link name="link">
+        <pose>0 0 0 1.57 0 0</pose>
+        <inertial>
+            <mass>1.0</mass>
+            <inertia> <!-- inertias are tricky to compute -->
+            <!-- http://gazebosim.org/tutorials?tut=inertia&cat=build_robot -->
+            <ixx>0.083</ixx>       <!-- for a box: ixx = 0.083 * mass * (y*y + z*z) -->
+            <ixy>0.0</ixy>         <!-- for a box: ixy = 0 -->
+            <ixz>0.0</ixz>         <!-- for a box: ixz = 0 -->
+            <iyy>0.083</iyy>       <!-- for a box: iyy = 0.083 * mass * (x*x + z*z) -->
+            <iyz>0.0</iyz>         <!-- for a box: iyz = 0 -->
+            <izz>0.083</izz>       <!-- for a box: izz = 0.083 * mass * (x*x + y*y) -->
+            </inertia>
+        </inertial>
+        <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>model://wind_turbine/meshes/wind_turbine.dae</uri>
+            <scale>12 12 12</scale>
+          </mesh>
+        </geometry>
+      </collision>
+        <visual name="visual">
+          <geometry>
+            
+            <mesh>
+              
+              <uri>model://wind_turbine/meshes/wind_turbine.dae</uri>
+              <scale>12 12 12</scale>
+            </mesh>
+            
+          </geometry>
+          <material> 
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0 0 0 0</specular>
+            <emissive>0 0 0 1</emissive>
+          </material> 
+        </visual>
+    </link>
+  </model>
+</sdf>

@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <world name="default">
+    <scene>
+      <sky>
+        <clouds>
+          <speed>12</speed>
+        </clouds>
+      </sky>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.25 0.25 0.25 1</background>
+    </scene>
+   
+    <!-- A global light source -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+   
+    <model name="map">
+        <include>
+        <pose>0 0 0 0 0 -0.57</pose>  
+        <uri>model://wind_farm</uri>
+        </include>
+    </model>
+    <include>
+      <pose>11.57 -2.2 0 0 0 3.14</pose>
+      <uri>model://wind_turbine</uri>
+    </include>
+    <model name="iris">
+      <include>
+        <uri>model://drone_with_camera</uri>
+      </include>
+      <pose> 60 0 1.25 0 0 -3.1</pose>
+    </model>
+	</world>
+</sdf>

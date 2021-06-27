@@ -1,0 +1,59 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+    <model name="heightmap">
+      <pose>0 0 0 0 0 1.57</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <heightmap>
+              <uri>model://kspire2/textures/kspire2_heightmap.png</uri>
+              <size>600.0 600.0 271</size>
+              <!-- <blend>
+                <min_height>2</min_height>
+                <fade_dist>5</fade_dist>
+              </blend>
+              <blend>
+                <min_height>4</min_height>
+                <fade_dist>10</fade_dist>
+              </blend>
+              <blend>
+                <min_height>10</min_height>
+                <fade_dist>20</fade_dist>
+              </blend> -->
+              <sampling>10</sampling>
+            </heightmap>
+          </geometry>
+        </collision>
+        <visual name="visual_abcedf">
+          <geometry>
+            <heightmap>
+              <use_terrain_paging>false</use_terrain_paging>
+              <texture>
+                <diffuse>model://kspire2/textures/kspire2_aerial.png</diffuse>
+                <normal>model://kspire2/textures/kspire2_aerial.png</normal>
+                <size>600.0 600.0 271</size>
+                
+              </texture>
+             <!-- <blend>
+                <min_height>2</min_height>
+                <fade_dist>5</fade_dist>
+              </blend>
+              <blend>
+                <min_height>4</min_height>
+                <fade_dist>10</fade_dist>
+              </blend>
+              <blend>
+                <min_height>10</min_height>
+                <fade_dist>20</fade_dist>
+              </blend> -->
+              <uri>model://kspire2/textures/kspire2_heightmap.png</uri>
+              <size>600.0 600.0 271</size>
+              <pos>0 0 0</pos>
+              <sampling>10</sampling>
+            </heightmap>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+</sdf>
