@@ -9,10 +9,11 @@
 	<arg name="log_output" default="screen" />
 	<arg name="respawn_mavros" default="true"/>
 	<arg name="mavros_ns" default="/"/>
+	<arg name="config_yaml" default="$(find mavros)/launch/apm_config.yaml" />
 
 	<include file="$(find iq_sim)/launch/mavros_node.launch">
 		<arg name="pluginlists_yaml" value="$(find mavros)/launch/apm_pluginlists.yaml" />
-		<arg name="config_yaml" value="$(find mavros)/launch/apm_config.yaml" />
+		<arg name="config_yaml" value="$(arg config_yaml)" />
 		<arg name="mavros_ns" value="$(arg mavros_ns)"/>
 		<arg name="fcu_url" value="$(arg fcu_url)" />
 		<arg name="gcs_url" value="$(arg gcs_url)" />
