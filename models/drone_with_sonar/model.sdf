@@ -37,7 +37,7 @@
         <sensor type="ray" name="sonar_sensor">
           
           <visualize>true</visualize>
-          <update_rate>50</update_rate>
+          <update_rate>10</update_rate>
           <ray>
              <scan>
                 <horizontal>
@@ -59,11 +59,11 @@
                 <resolution>0.02</resolution>
              </range>
           </ray>
-          <plugin filename="libgazebo_ros_range.so" name="gazebo_ros_range">
+          <plugin filename="libgazebo_ros_range_iq.so" name="gazebo_ros_range2">
              <gaussianNoise>0.005</gaussianNoise>
              <alwaysOn>true</alwaysOn>
              <updateRate>50</updateRate>
-             <topicName>/mavros/distance_sensor/front_sub</topicName>
+             <topicName>/mavros/distance_sensor/front</topicName>
              <frameName>base_sonar_front</frameName>
              <radiation>INFRARED</radiation>
              <fov>0.2967</fov>
@@ -119,7 +119,7 @@
         <sensor type="ray" name="sonar_sensor">
           
           <visualize>true</visualize>
-          <update_rate>50</update_rate>
+          <update_rate>10</update_rate>
           <ray>
              <scan>
                 <horizontal>
@@ -141,11 +141,11 @@
                 <resolution>0.02</resolution>
              </range>
           </ray>
-          <plugin filename="libgazebo_ros_range.so" name="gazebo_ros_range">
+          <plugin filename="libgazebo_ros_range_iq.so" name="gazebo_ros_range2">
              <gaussianNoise>0.005</gaussianNoise>
              <alwaysOn>true</alwaysOn>
              <updateRate>50</updateRate>
-             <topicName>/mavros/distance_sensor/rangefinder_sub</topicName>
+             <topicName>/mavros/distance_sensor/left</topicName>
              <frameName>base_sonar_left</frameName>
              <radiation>INFRARED</radiation>
              <fov>0.2967</fov>
@@ -201,7 +201,7 @@
         <sensor type="ray" name="sonar_sensor">
           
           <visualize>true</visualize>
-          <update_rate>50</update_rate>
+          <update_rate>10</update_rate>
           <ray>
              <scan>
                 <horizontal>
@@ -223,11 +223,11 @@
                 <resolution>0.02</resolution>
              </range>
           </ray>
-          <plugin filename="libgazebo_ros_range.so" name="gazebo_ros_range">
+          <plugin filename="libgazebo_ros_range_iq.so" name="gazebo_ros_range2">
              <gaussianNoise>0.005</gaussianNoise>
              <alwaysOn>true</alwaysOn>
              <updateRate>50</updateRate>
-             <topicName>drone1/sensor/sonar/right</topicName>
+             <topicName>/mavros/distance_sensor/right</topicName>
              <frameName>base_sonar_right</frameName>
              <radiation>INFRARED</radiation>
              <fov>0.2967</fov>
@@ -283,7 +283,7 @@
         <sensor type="ray" name="sonar_sensor">
           
           <visualize>true</visualize>
-          <update_rate>50</update_rate>
+          <update_rate>10</update_rate>
           <ray>
              <scan>
                 <horizontal>
@@ -305,11 +305,11 @@
                 <resolution>0.02</resolution>
              </range>
           </ray>
-          <plugin filename="libgazebo_ros_range.so" name="gazebo_ros_range">
+          <plugin filename="libgazebo_ros_range_iq.so" name="gazebo_ros_range2">
              <gaussianNoise>0.005</gaussianNoise>
              <alwaysOn>true</alwaysOn>
              <updateRate>50</updateRate>
-             <topicName>drone1/sensor/sonar/back</topicName>
+             <topicName>/mavros/distance_sensor/back</topicName>
              <frameName>base_sonar_back</frameName>
              <radiation>INFRARED</radiation>
              <fov>0.2967</fov>
