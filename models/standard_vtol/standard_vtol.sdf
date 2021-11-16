@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
-<sdf version='1.5'> 
+<sdf version='1.6'>
   <model name='standard_vtol'>
     <pose>0 0 0.246 0 0 0</pose>
     <link name='base_link'>
       <pose>0 0 0 0 0 0</pose>
       <inertial>
         <pose>0 0 0 0 0 0</pose>
-        <mass>1</mass>
+        <mass>3</mass>
         <inertia>
           <ixx>0.477708333333</ixx>
           <ixy>0</ixy>
@@ -144,10 +144,89 @@
       <velocity_decay/>
       <self_collide>0</self_collide>
     </link>
-      <link name='standard_vtol/imu_link'>
+    <link name='standard_vtol/gps_link'>
       <inertial>
-        <pose>0 0 0 0 0 0</pose>
-        <mass>0.15</mass>
+          <pose>0 0 0 0 0 0</pose>
+          <mass>0.015</mass>
+          <inertia>
+            <ixx>0.00001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.00002</iyy>
+            <iyz>0</iyz>
+            <izz>0.00002</izz>
+          </inertia>
+        </inertial>
+      <sensor name="gps_sensor" type="gps">
+        <pose>0 0 0  0 0 0</pose>
+        <update_rate>10.0</update_rate>
+        <always_on>true</always_on>
+        <gps>
+          <position_sensing>
+            <horizontal>
+              <noise type="gaussian_quantized">
+                <mean>0</mean>
+                <stddev>1</stddev>
+                <bias_mean>3</bias_mean>
+                <bias_stddev>1</bias_stddev>
+                <precision>0.5</precision>
+              </noise>
+            </horizontal>
+            <vertical>
+              <noise type="gaussian_quantized">
+                <mean>0</mean>
+                <stddev>1</stddev>
+                <bias_mean>3</bias_mean>
+                <bias_stddev>1</bias_stddev>
+                <precision>1.0</precision>
+              </noise>
+            </vertical>
+          </position_sensing>
+          <velocity_sensing>
+            <horizontal>
+              <noise type="gaussian_quantized">
+                <mean>0</mean>
+                <stddev>0.1</stddev>
+                <bias_mean>0.1</bias_mean>
+                <bias_stddev>0.1</bias_stddev>
+                <precision>0.1</precision>
+              </noise>
+            </horizontal>
+            <vertical>
+              <noise type="gaussian_quantized">
+                <mean>0</mean>
+                <stddev>0.2</stddev>
+                <bias_mean>0.2</bias_mean>
+                <bias_stddev>0.2</bias_stddev>
+                <precision>0.2</precision>
+              </noise>
+            </vertical>
+          </velocity_sensing>
+        </gps>
+      </sensor>
+    </link>
+    <joint name='standard_vtol/imu_joint' type='revolute'>
+      <child>standard_vtol/imu_link</child>
+      <parent>base_link</parent>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <lower>0</lower>
+          <upper>0</upper>
+          <effort>0</effort>
+          <velocity>0</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='standard_vtol/imu_link'>
+      <pose>0 0 0 0 0 0</pose>
+      <inertial>
+        <mass>0.015</mass>
         <inertia>
           <ixx>0.00001</ixx>
           <ixy>0</ixy>
@@ -160,31 +239,9 @@
       <sensor name="imu_sensor" type="imu">
         <pose>0 0 0 3.141593 0 0</pose>
         <always_on>1</always_on>
-        <update_rate>1000.0</update_rate>
+        <update_rate>1000</update_rate>
       </sensor>
     </link>
-    <joint name='standard_vtol/imu_joint' type='revolute'>
-      <child>standard_vtol/imu_link</child>
-      <parent>base_link</parent>
-      <axis>
-        <xyz>0 0 1</xyz>
-        <limit>
-          <lower>0</lower>
-          <upper>0</upper>
-          <effort>0</effort>
-          <velocity>0</velocity>
-        </limit>
-        <dynamics>
-          <damping>1.0</damping>
-        </dynamics>
-        <use_parent_model_frame>1</use_parent_model_frame>
-      </axis>
-      <physics>
-        <ode>
-          <implicit_spring_damper>1</implicit_spring_damper>
-        </ode>
-      </physics>
-    </joint>
     <link name='rotor_0'>
       <pose>0.35 -0.35 0.07 0 0 0</pose>
       <inertial>
@@ -763,24 +820,6 @@
       <upward>0 1 0</upward>
       <link_name>base_link</link_name>
     </plugin>
-
-    <!--
-    <plugin name='wind_plugin' filename='libgazebo_wind_plugin.so'>
-      <frameId>base_link</frameId>
-      <linkName>base_link</linkName>
-      <robotNamespace/>
-      <xyzOffset>1 0 0</xyzOffset>
-      <windDirection>0 1 0</windDirection>
-      <windForceMean>0.7</windForceMean>
-      <windGustDirection>0 0 0</windGustDirection>
-      <windGustDuration>0</windGustDuration>
-      <windGustStart>0</windGustStart>
-      <windGustForceMean>0</windGustForceMean>
-    </plugin>
-    -->
- 
-
-    <!-- plugins -->
     <plugin name="rotor_0_blade_1" filename="libLiftDragPlugin.so">
       <a0>0.3</a0>
       <alpha_stall>1.4</alpha_stall>
@@ -813,7 +852,6 @@
       <upward>0 0 1</upward>
       <link_name>standard_vtol::rotor_0</link_name>
     </plugin>
-
     <plugin name="rotor_1_blade_1" filename="libLiftDragPlugin.so">
       <a0>0.3</a0>
       <alpha_stall>1.4</alpha_stall>
@@ -846,7 +884,6 @@
       <upward>0 0 1</upward>
       <link_name>standard_vtol::rotor_1</link_name>
     </plugin>
-
     <plugin name="rotor_2_blade_1" filename="libLiftDragPlugin.so">
       <a0>0.3</a0>
       <alpha_stall>1.4</alpha_stall>
@@ -879,7 +916,6 @@
       <upward>0 0 1</upward>
       <link_name>standard_vtol::rotor_2</link_name>
     </plugin>
-
     <plugin name="rotor_3_blade_1" filename="libLiftDragPlugin.so">
       <a0>0.3</a0>
       <alpha_stall>1.4</alpha_stall>
@@ -912,87 +948,157 @@
       <upward>0 0 1</upward>
       <link_name>standard_vtol::rotor_3</link_name>
     </plugin>
-
-
-
-    <plugin name="arducopter_plugin" filename="libArduPilotPlugin.so">
+    <plugin name="rotor_puller_blade_1" filename="libLiftDragPlugin.so">
+      <a0>0.3</a0>
+      <alpha_stall>1.4</alpha_stall>
+      <cla>4.2500</cla>
+      <cda>0.10</cda>
+      <cma>0.00</cma>
+      <cla_stall>-0.025</cla_stall>
+      <cda_stall>0.0</cda_stall>
+      <cma_stall>0.0</cma_stall>
+      <area>0.002</area>
+      <air_density>1.2041</air_density>
+      <cp>0.084 0 0</cp>
+      <forward>0 -1 0</forward>
+      <upward>0 0 -1</upward>
+      <link_name>standard_vtol::rotor_puller</link_name>
+    </plugin>
+    <plugin name="rotor_puller_blade_2" filename="libLiftDragPlugin.so">
+      <a0>0.3</a0>
+      <alpha_stall>1.4</alpha_stall>
+      <cla>4.2500</cla>
+      <cda>0.10</cda>
+      <cma>0.00</cma>
+      <cla_stall>-0.025</cla_stall>
+      <cda_stall>0.0</cda_stall>
+      <cma_stall>0.0</cma_stall>
+      <area>0.002</area>
+      <air_density>1.2041</air_density>
+      <cp>-0.084 0 0</cp>
+      <forward>0 1 0</forward>
+      <upward>0 0 -1</upward>
+      <link_name>standard_vtol::rotor_puller</link_name>
+    </plugin>
+    <plugin name="ardupilot_plugin" filename="libArduPilotPlugin.so">
       <fdm_addr>127.0.0.1</fdm_addr>
       <fdm_port_in>9002</fdm_port_in>
       <fdm_port_out>9003</fdm_port_out>
-      <!--
-          Require by APM :
-          Only change model and gazebo from XYZ to XY-Z coordinates
-      -->
       <modelXYZToAirplaneXForwardZDown>0 0 0 3.141593 0 0</modelXYZToAirplaneXForwardZDown>
       <gazeboXYZToNED>0 0 0 3.141593 0 0</gazeboXYZToNED>
-      <imuName>standard_vtol/imu_link::imu_sensor</imuName>
+      <imuName>standard_vtol::standard_vtol/imu_link::imu_sensor</imuName>
       <connectionTimeoutMaxCount>5</connectionTimeoutMaxCount>
       <control channel="0">
-      <!--
-          incoming control command [0, 1]
-          so offset it by 0 to get [0, 1]
-          and divide max target by 1.
-          offset = 0
-          multiplier = 838 max rpm / 1 = 838
-        -->
-        <type>VELOCITY</type>
+          <multiplier>1</multiplier>
+          <offset>-0.5</offset>
+          <type>POSITION</type>
+          <p_gain>2.5</p_gain>
+          <i_gain>0</i_gain>
+          <d_gain>0</d_gain>
+          <i_max>0</i_max>
+          <i_min>0</i_min>
+          <cmd_max>1</cmd_max>
+          <cmd_min>-1</cmd_min>
+        <jointName>standard_vtol::left_elevon_joint</jointName>
+      </control>
+      <control channel="1">
+          <multiplier>1</multiplier>
+          <offset>-0.5</offset>
+          <type>POSITION</type>
+          <p_gain>2.5</p_gain>
+          <i_gain>0</i_gain>
+          <d_gain>0</d_gain>
+          <i_max>0</i_max>
+          <i_min>0</i_min>
+          <cmd_max>1</cmd_max>
+          <cmd_min>-1</cmd_min>
+        <jointName>standard_vtol::right_elevon_joint</jointName>
+      </control>
+      <control channel="2">
+          <multiplier>1</multiplier>
+          <offset>-0.5</offset>
+          <type>POSITION</type>
+          <p_gain>2.5</p_gain>
+          <i_gain>0</i_gain>
+          <d_gain>0.1</d_gain>
+          <i_max>0</i_max>
+          <i_min>0</i_min>
+          <cmd_max>1</cmd_max>
+          <cmd_min>-1</cmd_min>
+        <jointName>standard_vtol::elevator_joint</jointName>
+      </control>
+      <control channel="3">
+        <multiplier>1000</multiplier>
         <offset>0</offset>
-        <p_gain>0.20</p_gain>
+        <type>VELOCITY</type>
+        <p_gain>10</p_gain>
         <i_gain>0</i_gain>
         <d_gain>0</d_gain>
+        <i_max>0</i_max>
+        <i_min>0</i_min>
+        <cmd_max>20</cmd_max>
+        <cmd_min>0</cmd_min>
+        <jointName>standard_vtol::rotor_puller_joint</jointName>
+        <rotorVelocitySlowdownSim>1</rotorVelocitySlowdownSim>
+      </control>
+      <control channel="4">
+        <multiplier>1000</multiplier>
+        <offset>0</offset>
+        <type>VELOCITY</type>
+        <p_gain>0.2</p_gain>
+        <i_gain>0.2</i_gain>
+        <d_gain>0.0</d_gain>
         <i_max>0</i_max>
         <i_min>0</i_min>
         <cmd_max>2.5</cmd_max>
         <cmd_min>-2.5</cmd_min>
         <jointName>standard_vtol::rotor_0_joint</jointName>
-        <multiplier>838</multiplier>
-        <controlVelocitySlowdownSim>1</controlVelocitySlowdownSim>
+        <rotorVelocitySlowdownSim>1</rotorVelocitySlowdownSim>
+        <multiplier>1</multiplier>
       </control>
-      <control channel="1">
-        <type>VELOCITY</type>
+      <control channel="5">
+        <multiplier>1000</multiplier>
         <offset>0</offset>
-        <p_gain>0.20</p_gain>
-        <i_gain>0</i_gain>
-        <d_gain>0</d_gain>
+        <type>VELOCITY</type>
+        <p_gain>0.2</p_gain>
+        <i_gain>0.2</i_gain>
+        <d_gain>0.0</d_gain>
         <i_max>0</i_max>
         <i_min>0</i_min>
         <cmd_max>2.5</cmd_max>
         <cmd_min>-2.5</cmd_min>
         <jointName>standard_vtol::rotor_1_joint</jointName>
-        <multiplier>838</multiplier>
-        <controlVelocitySlowdownSim>1</controlVelocitySlowdownSim>
+        <rotorVelocitySlowdownSim>1</rotorVelocitySlowdownSim>
       </control>
-      <control channel="2">
-        <type>VELOCITY</type>
+      <control channel="6">
+        <multiplier>-1000</multiplier>
         <offset>0</offset>
-        <p_gain>0.20</p_gain>
-        <i_gain>0</i_gain>
-        <d_gain>0</d_gain>
+        <type>VELOCITY</type>
+        <p_gain>0.2</p_gain>
+        <i_gain>0.2</i_gain>
+        <d_gain>0.0</d_gain>
         <i_max>0</i_max>
         <i_min>0</i_min>
         <cmd_max>2.5</cmd_max>
         <cmd_min>-2.5</cmd_min>
         <jointName>standard_vtol::rotor_2_joint</jointName>
-        <multiplier>-838</multiplier>
-        <controlVelocitySlowdownSim>1</controlVelocitySlowdownSim>
+        <rotorVelocitySlowdownSim>1</rotorVelocitySlowdownSim>
       </control>
-      <control channel="3">
-        <type>VELOCITY</type>
+      <control channel="7">
+        <multiplier>-1000</multiplier>
         <offset>0</offset>
-        <p_gain>0.20</p_gain>
-        <i_gain>0</i_gain>
-        <d_gain>0</d_gain>
+        <type>VELOCITY</type>
+        <p_gain>0.2</p_gain>
+        <i_gain>0.2</i_gain>
+        <d_gain>0.0</d_gain>
         <i_max>0</i_max>
         <i_min>0</i_min>
         <cmd_max>2.5</cmd_max>
         <cmd_min>-2.5</cmd_min>
         <jointName>standard_vtol::rotor_3_joint</jointName>
-        <multiplier>-838</multiplier>
-        <controlVelocitySlowdownSim>1</controlVelocitySlowdownSim>
+        <rotorVelocitySlowdownSim>1</rotorVelocitySlowdownSim>
       </control>
     </plugin>
-
-
     <static>0</static>
   </model>
 </sdf>
