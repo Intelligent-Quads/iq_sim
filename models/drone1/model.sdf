@@ -2,9 +2,9 @@
 <sdf version="1.6" >
   <model name="iris_demo">
     <include>
-      <uri>model://iris_with_standoffs</uri>
+      <uri>model://iris_base</uri>
     </include>
-     
+
     <!-- plugins -->
     <plugin name="rotor_0_blade_1" filename="libLiftDragPlugin.so">
       <a0>0.3</a0>
@@ -147,7 +147,7 @@
       -->
       <modelXYZToAirplaneXForwardZDown>0 0 0 3.141593 0 0</modelXYZToAirplaneXForwardZDown>
       <gazeboXYZToNED>0 0 0 3.141593 0 0</gazeboXYZToNED>
-      <imuName>iris_demo::iris::iris/imu_link::imu_sensor</imuName>
+      <imuName>iris::iris/imu_link::imu_sensor</imuName>
       <connectionTimeoutMaxCount>5</connectionTimeoutMaxCount>
       <control channel="0">
       <!--

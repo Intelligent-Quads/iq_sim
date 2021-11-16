@@ -1,0 +1,25 @@
+<launch>
+	<!-- vim: set ft=xml noet : -->
+	<!-- Experimental launch script for APM based Drone -->
+
+	<arg name="fcu_url" default="udp://127.0.0.1:14551@14555" />
+	<arg name="gcs_url" default="" />
+	<arg name="tgt_system" default="1" />
+	<arg name="tgt_component" default="1" />
+	<arg name="log_output" default="screen" />
+	<arg name="respawn_mavros" default="true"/>
+	<arg name="mavros_ns" default="/"/>
+	<arg name="config_yaml" default="$(find mavros)/launch/apm_config.yaml" />
+
+	<include file="$(find iq_sim)/launch/mavros_node.launch">
+		<arg name="pluginlists_yaml" value="$(find mavros)/launch/apm_pluginlists.yaml" />
+		<arg name="config_yaml" value="$(arg config_yaml)" />
+		<arg name="mavros_ns" value="$(arg mavros_ns)"/>
+		<arg name="fcu_url" value="$(arg fcu_url)" />
+		<arg name="gcs_url" value="$(arg gcs_url)" />
+		<arg name="respawn_mavros" value="$(arg respawn_mavros)"/>
+		<arg name="tgt_system" value="$(arg tgt_system)" />
+		<arg name="tgt_component" value="$(arg tgt_component)" />
+		<arg name="log_output" value="$(arg log_output)" />
+	</include>
+</launch>

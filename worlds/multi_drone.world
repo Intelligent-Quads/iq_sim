@@ -1,0 +1,155 @@
+<?xml version="1.0"?> 
+<sdf version="1.5">
+  <world name="default">
+    <physics type="ode">
+      <ode>
+        <solver>
+          <type>quick</type>
+          <iters>100</iters>
+          <sor>1.0</sor>
+        </solver>
+        <constraints>
+          <cfm>0.0</cfm>
+          <erp>0.9</erp>
+          <contact_max_correcting_vel>0.1</contact_max_correcting_vel>
+          <contact_surface_layer>0.0</contact_surface_layer>
+        </constraints>
+      </ode>
+      <real_time_update_rate>-1</real_time_update_rate>
+    </physics>
+
+    <model name="ground_plane">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>5000 5000</size>
+            </plane>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>1</mu>
+                <mu2>1</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="runway">
+          <pose>000 0 0.005 0 0 0</pose>
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>1829 45</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Runway</name>
+            </script>
+          </material>
+        </visual>
+
+        <visual name="grass">
+          <pose>0 0 -0.1 0 0 0</pose>
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>5000 5000</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grass</name>
+            </script>
+          </material>
+        </visual>
+
+      </link>
+    </model>
+
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    <model name="drone1">
+      <pose> 0 0 0 0 0 0</pose>
+      <include>
+        <uri>model://drone1</uri>
+      </include>
+    </model>
+    <model name="drone2">
+      <pose> 0 -5 0 0 0 1.57</pose>
+      <include>
+        <uri>model://drone2</uri>
+      </include>
+    </model>
+    <model name="drone3">
+      <pose> 5 -5 0 0 0 3.14</pose>
+      <include>
+        <uri>model://drone3</uri>
+      </include>
+    </model>
+    <!--<model name="drone4">
+      <pose> 5 0 0 0 0 4.71</pose>
+      <include>
+        <uri>model://drone4</uri>
+      </include>
+    </model>
+     <model name="drone5">
+      <pose> 6 0 0 0 0 0</pose>
+      <include>
+        <uri>model://drone5</uri>
+      </include>
+    </model>
+    <model name="drone6">
+      <pose> 6 2 0 0 0 0</pose>
+      <include>
+        <uri>model://drone6</uri>
+      </include>
+    </model>
+    <model name="drone7">
+      <pose> 8 0 0 0 0 0</pose>
+      <include>
+        <uri>model://drone7</uri>
+      </include>
+    </model>
+    <model name="drone8">
+      <pose> 8 2 0 0 0 0</pose>
+      <include>
+        <uri>model://drone8</uri>
+      </include>
+    </model>
+    <model name="drone9">
+      <pose> 12 0 0 0 0 0</pose>
+      <include>
+        <uri>model://drone9</uri>
+      </include>
+    </model>
+    <model name="drone10">
+      <pose> 12 2 0 0 0 0</pose>
+      <include>
+        <uri>model://drone10</uri>
+      </include>
+    </model>
+    <model name="drone11">
+      <pose> 14 0 0 0 0 0</pose>
+      <include>
+        <uri>model://drone11</uri>
+      </include>
+    </model>
+    <model name="drone12">
+      <pose> 14 2 0 0 0 0</pose>
+      <include>
+        <uri>model://drone12</uri>
+      </include>
+    </model> -->
+
+  </world>
+</sdf>
+

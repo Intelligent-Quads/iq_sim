@@ -1,0 +1,545 @@
+<?xml version='1.0'?>
+<sdf version="1.6" >
+  <model name="drone_with_sonar">
+    <include>
+      <uri>model://iris_base</uri>
+    </include>
+
+          <!-- Sonar Sensor -->
+      <link name="base_sonar_front">
+        <pose>0.18 0 .2 0 0 0</pose>
+        <collision name="sonar_collision">
+          <geometry>
+            <box>
+              <size>.01 .01 .01</size>
+            </box>
+          </geometry>
+        </collision>
+
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.01 0.01 0.01</size>
+            </box>
+          </geometry>
+        </visual>
+        <inertial>
+          <mass>0.1</mass>
+          <inertia>
+            <ixx>0.001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.001</iyy>
+            <iyz>0</iyz>
+            <izz>0.001</izz>
+          </inertia>
+        </inertial>
+        <sensor type="ray" name="sonar_sensor">
+          
+          <visualize>true</visualize>
+          <update_rate>10</update_rate>
+          <ray>
+             <scan>
+                <horizontal>
+                   <samples>10</samples>
+                   <resolution>1</resolution> 
+                   <min_angle>-0.14835</min_angle>
+                   <max_angle>0.14835</max_angle>
+                </horizontal>
+                <vertical>
+                   <samples>10</samples>
+                   <resolution>1</resolution> 
+                   <min_angle>-0.14835</min_angle>
+                   <max_angle>0.14835</max_angle> 
+                </vertical>
+             </scan>
+             <range>
+                <min>0.06</min>
+                <max>7</max>
+                <resolution>0.02</resolution>
+             </range>
+          </ray>
+          <plugin filename="libgazebo_ros_range_iq.so" name="gazebo_ros_range2">
+             <gaussianNoise>0.005</gaussianNoise>
+             <alwaysOn>true</alwaysOn>
+             <updateRate>50</updateRate>
+             <topicName>/mavros/distance_sensor/front</topicName>
+             <frameName>base_sonar_front</frameName>
+             <radiation>INFRARED</radiation>
+             <fov>0.2967</fov>
+          </plugin>
+        </sensor>
+      </link>
+
+     
+      <joint type="fixed" name="base_sonar_joint">
+        <pose>0 0 0 0 0 0</pose>
+        <parent>iris::base_link</parent>
+        <child>base_sonar_front</child>
+        <axis>
+          <limit>
+            <lower>0</lower>
+            <upper>0</upper>
+          </limit>
+          <xyz>0 0 1</xyz>
+          <use_parent_model_frame>true</use_parent_model_frame>
+        </axis>
+      </joint>  
+   
+
+      <!-- Sonar Sensor -->
+      <link name="base_sonar_left">
+        <pose>0 0.18 .2 0 0 1.57</pose>
+        <collision name="sonar_collision">
+          <geometry>
+            <box>
+              <size>.01 .01 .01</size>
+            </box>
+          </geometry>
+        </collision>
+
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.01 0.01 0.01</size>
+            </box>
+          </geometry>
+        </visual>
+        <inertial>
+          <mass>0.1</mass>
+          <inertia>
+            <ixx>0.001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.001</iyy>
+            <iyz>0</iyz>
+            <izz>0.001</izz>
+          </inertia>
+        </inertial>
+        <sensor type="ray" name="sonar_sensor">
+          
+          <visualize>true</visualize>
+          <update_rate>10</update_rate>
+          <ray>
+             <scan>
+                <horizontal>
+                   <samples>10</samples>
+                   <resolution>1</resolution> 
+                   <min_angle>-0.14835</min_angle>
+                   <max_angle>0.14835</max_angle>
+                </horizontal>
+                <vertical>
+                   <samples>10</samples>
+                   <resolution>1</resolution> 
+                   <min_angle>-0.14835</min_angle>
+                   <max_angle>0.14835</max_angle> 
+                </vertical>
+             </scan>
+             <range>
+                <min>0.06</min>
+                <max>7</max>
+                <resolution>0.02</resolution>
+             </range>
+          </ray>
+          <plugin filename="libgazebo_ros_range_iq.so" name="gazebo_ros_range2">
+             <gaussianNoise>0.005</gaussianNoise>
+             <alwaysOn>true</alwaysOn>
+             <updateRate>50</updateRate>
+             <topicName>/mavros/distance_sensor/left</topicName>
+             <frameName>base_sonar_left</frameName>
+             <radiation>INFRARED</radiation>
+             <fov>0.2967</fov>
+          </plugin>
+        </sensor>
+      </link>
+
+     
+      <joint type="fixed" name="base_sonar_joint_left">
+        <pose>0 0 0 0 0 0</pose>
+        <parent>iris::base_link</parent>
+        <child>base_sonar_left</child>
+        <axis>
+          <limit>
+            <lower>0</lower>
+            <upper>0</upper>
+          </limit>
+          <xyz>0 0 1</xyz>
+          <use_parent_model_frame>true</use_parent_model_frame>
+        </axis>
+      </joint>  
+
+
+      <!-- Sonar Sensor -->
+      <link name="base_sonar_right">
+        <pose>0 -0.18 .2 0 0 -1.57</pose>
+        <collision name="sonar_collision">
+          <geometry>
+            <box>
+              <size>.01 .01 .01</size>
+            </box>
+          </geometry>
+        </collision>
+
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.01 0.01 0.01</size>
+            </box>
+          </geometry>
+        </visual>
+        <inertial>
+          <mass>0.1</mass>
+          <inertia>
+            <ixx>0.001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.001</iyy>
+            <iyz>0</iyz>
+            <izz>0.001</izz>
+          </inertia>
+        </inertial>
+        <sensor type="ray" name="sonar_sensor">
+          
+          <visualize>true</visualize>
+          <update_rate>10</update_rate>
+          <ray>
+             <scan>
+                <horizontal>
+                   <samples>10</samples>
+                   <resolution>1</resolution> 
+                   <min_angle>-0.14835</min_angle>
+                   <max_angle>0.14835</max_angle>
+                </horizontal>
+                <vertical>
+                   <samples>10</samples>
+                   <resolution>1</resolution> 
+                   <min_angle>-0.14835</min_angle>
+                   <max_angle>0.14835</max_angle> 
+                </vertical>
+             </scan>
+             <range>
+                <min>0.06</min>
+                <max>7</max>
+                <resolution>0.02</resolution>
+             </range>
+          </ray>
+          <plugin filename="libgazebo_ros_range_iq.so" name="gazebo_ros_range2">
+             <gaussianNoise>0.005</gaussianNoise>
+             <alwaysOn>true</alwaysOn>
+             <updateRate>50</updateRate>
+             <topicName>/mavros/distance_sensor/right</topicName>
+             <frameName>base_sonar_right</frameName>
+             <radiation>INFRARED</radiation>
+             <fov>0.2967</fov>
+          </plugin>
+        </sensor>
+      </link>
+
+     
+      <joint type="fixed" name="base_sonar_joint_right">
+        <pose>0 0 0 0 0 0</pose>
+        <parent>iris::base_link</parent>
+        <child>base_sonar_right</child>
+        <axis>
+          <limit>
+            <lower>0</lower>
+            <upper>0</upper>
+          </limit>
+          <xyz>0 0 1</xyz>
+          <use_parent_model_frame>true</use_parent_model_frame>
+        </axis>
+      </joint>  
+
+
+      <!-- Sonar Sensor -->
+      <link name="base_sonar_back">
+        <pose>-0.18 0 0.2 0 0 3.14</pose>
+        <collision name="sonar_collision">
+          <geometry>
+            <box>
+              <size>.01 .01 .01</size>
+            </box>
+          </geometry>
+        </collision>
+
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.01 0.01 0.01</size>
+            </box>
+          </geometry>
+        </visual>
+        <inertial>
+          <mass>0.1</mass>
+          <inertia>
+            <ixx>0.001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.001</iyy>
+            <iyz>0</iyz>
+            <izz>0.001</izz>
+          </inertia>
+        </inertial>
+        <sensor type="ray" name="sonar_sensor">
+          
+          <visualize>true</visualize>
+          <update_rate>10</update_rate>
+          <ray>
+             <scan>
+                <horizontal>
+                   <samples>10</samples>
+                   <resolution>1</resolution> 
+                   <min_angle>-0.14835</min_angle>
+                   <max_angle>0.14835</max_angle>
+                </horizontal>
+                <vertical>
+                   <samples>10</samples>
+                   <resolution>1</resolution> 
+                   <min_angle>-0.14835</min_angle>
+                   <max_angle>0.14835</max_angle> 
+                </vertical>
+             </scan>
+             <range>
+                <min>0.06</min>
+                <max>7</max>
+                <resolution>0.02</resolution>
+             </range>
+          </ray>
+          <plugin filename="libgazebo_ros_range_iq.so" name="gazebo_ros_range2">
+             <gaussianNoise>0.005</gaussianNoise>
+             <alwaysOn>true</alwaysOn>
+             <updateRate>50</updateRate>
+             <topicName>/mavros/distance_sensor/back</topicName>
+             <frameName>base_sonar_back</frameName>
+             <radiation>INFRARED</radiation>
+             <fov>0.2967</fov>
+          </plugin>
+        </sensor>
+      </link>
+
+     
+      <joint type="fixed" name="base_sonar_joint_back">
+        <pose>0 0 0 0 0 0</pose>
+        <parent>iris::base_link</parent>
+        <child>base_sonar_back</child>
+        <axis>
+          <limit>
+            <lower>0</lower>
+            <upper>0</upper>
+          </limit>
+          <xyz>0 0 1</xyz>
+          <use_parent_model_frame>true</use_parent_model_frame>
+        </axis>
+      </joint>     
+
+    <!-- plugins -->
+    <plugin name="rotor_0_blade_1" filename="libLiftDragPlugin.so">
+      <a0>0.3</a0>
+      <alpha_stall>1.4</alpha_stall>
+      <cla>4.2500</cla>
+      <cda>0.10</cda>
+      <cma>0.00</cma>
+      <cla_stall>-0.025</cla_stall>
+      <cda_stall>0.0</cda_stall>
+      <cma_stall>0.0</cma_stall>
+      <area>0.002</area>
+      <air_density>1.2041</air_density>
+      <cp>0.084 0 0</cp>
+      <forward>0 1 0</forward>
+      <upward>0 0 1</upward>
+      <link_name>iris::rotor_0</link_name>
+    </plugin>
+    <plugin name="rotor_0_blade_2" filename="libLiftDragPlugin.so">
+      <a0>0.3</a0>
+      <alpha_stall>1.4</alpha_stall>
+      <cla>4.2500</cla>
+      <cda>0.10</cda>
+      <cma>0.00</cma>
+      <cla_stall>-0.025</cla_stall>
+      <cda_stall>0.0</cda_stall>
+      <cma_stall>0.0</cma_stall>
+      <area>0.002</area>
+      <air_density>1.2041</air_density>
+      <cp>-0.084 0 0</cp>
+      <forward>0 -1 0</forward>
+      <upward>0 0 1</upward>
+      <link_name>iris::rotor_0</link_name>
+    </plugin>
+
+    <plugin name="rotor_1_blade_1" filename="libLiftDragPlugin.so">
+      <a0>0.3</a0>
+      <alpha_stall>1.4</alpha_stall>
+      <cla>4.2500</cla>
+      <cda>0.10</cda>
+      <cma>0.00</cma>
+      <cla_stall>-0.025</cla_stall>
+      <cda_stall>0.0</cda_stall>
+      <cma_stall>0.0</cma_stall>
+      <area>0.002</area>
+      <air_density>1.2041</air_density>
+      <cp>0.084 0 0</cp>
+      <forward>0 1 0</forward>
+      <upward>0 0 1</upward>
+      <link_name>iris::rotor_1</link_name>
+    </plugin>
+    <plugin name="rotor_1_blade_2" filename="libLiftDragPlugin.so">
+      <a0>0.3</a0>
+      <alpha_stall>1.4</alpha_stall>
+      <cla>4.2500</cla>
+      <cda>0.10</cda>
+      <cma>0.00</cma>
+      <cla_stall>-0.025</cla_stall>
+      <cda_stall>0.0</cda_stall>
+      <cma_stall>0.0</cma_stall>
+      <area>0.002</area>
+      <air_density>1.2041</air_density>
+      <cp>-0.084 0 0</cp>
+      <forward>0 -1 0</forward>
+      <upward>0 0 1</upward>
+      <link_name>iris::rotor_1</link_name>
+    </plugin>
+
+    <plugin name="rotor_2_blade_1" filename="libLiftDragPlugin.so">
+      <a0>0.3</a0>
+      <alpha_stall>1.4</alpha_stall>
+      <cla>4.2500</cla>
+      <cda>0.10</cda>
+      <cma>0.00</cma>
+      <cla_stall>-0.025</cla_stall>
+      <cda_stall>0.0</cda_stall>
+      <cma_stall>0.0</cma_stall>
+      <area>0.002</area>
+      <air_density>1.2041</air_density>
+      <cp>0.084 0 0</cp>
+      <forward>0 -1 0</forward>
+      <upward>0 0 1</upward>
+      <link_name>iris::rotor_2</link_name>
+    </plugin>
+    <plugin name="rotor_2_blade_2" filename="libLiftDragPlugin.so">
+      <a0>0.3</a0>
+      <alpha_stall>1.4</alpha_stall>
+      <cla>4.2500</cla>
+      <cda>0.10</cda>
+      <cma>0.00</cma>
+      <cla_stall>-0.025</cla_stall>
+      <cda_stall>0.0</cda_stall>
+      <cma_stall>0.0</cma_stall>
+      <area>0.002</area>
+      <air_density>1.2041</air_density>
+      <cp>-0.084 0 0</cp>
+      <forward>0 1 0</forward>
+      <upward>0 0 1</upward>
+      <link_name>iris::rotor_2</link_name>
+    </plugin>
+
+    <plugin name="rotor_3_blade_1" filename="libLiftDragPlugin.so">
+      <a0>0.3</a0>
+      <alpha_stall>1.4</alpha_stall>
+      <cla>4.2500</cla>
+      <cda>0.10</cda>
+      <cma>0.00</cma>
+      <cla_stall>-0.025</cla_stall>
+      <cda_stall>0.0</cda_stall>
+      <cma_stall>0.0</cma_stall>
+      <area>0.002</area>
+      <air_density>1.2041</air_density>
+      <cp>0.084 0 0</cp>
+      <forward>0 -1 0</forward>
+      <upward>0 0 1</upward>
+      <link_name>iris::rotor_3</link_name>
+    </plugin>
+    <plugin name="rotor_3_blade_2" filename="libLiftDragPlugin.so">
+      <a0>0.3</a0>
+      <alpha_stall>1.4</alpha_stall>
+      <cla>4.2500</cla>
+      <cda>0.10</cda>
+      <cma>0.00</cma>
+      <cla_stall>-0.025</cla_stall>
+      <cda_stall>0.0</cda_stall>
+      <cma_stall>0.0</cma_stall>
+      <area>0.002</area>
+      <air_density>1.2041</air_density>
+      <cp>-0.084 0 0</cp>
+      <forward>0 1 0</forward>
+      <upward>0 0 1</upward>
+      <link_name>iris::rotor_3</link_name>
+    </plugin>
+    <plugin name="arducopter_plugin" filename="libArduPilotPlugin.so">
+      <fdm_addr>127.0.0.1</fdm_addr>
+      <fdm_port_in>9002</fdm_port_in>
+      <fdm_port_out>9003</fdm_port_out>
+      <!--
+          Require by APM :
+          Only change model and gazebo from XYZ to XY-Z coordinates
+      -->
+      <modelXYZToAirplaneXForwardZDown>0 0 0 3.141593 0 0</modelXYZToAirplaneXForwardZDown>
+      <gazeboXYZToNED>0 0 0 3.141593 0 0</gazeboXYZToNED>
+      <imuName>iris::iris/imu_link::imu_sensor</imuName>
+      <connectionTimeoutMaxCount>5</connectionTimeoutMaxCount>
+      <control channel="0">
+      <!--
+          incoming control command [0, 1]
+          so offset it by 0 to get [0, 1]
+          and divide max target by 1.
+          offset = 0
+          multiplier = 838 max rpm / 1 = 838
+        -->
+        <type>VELOCITY</type>
+        <offset>0</offset>
+        <p_gain>0.20</p_gain>
+        <i_gain>0</i_gain>
+        <d_gain>0</d_gain>
+        <i_max>0</i_max>
+        <i_min>0</i_min>
+        <cmd_max>2.5</cmd_max>
+        <cmd_min>-2.5</cmd_min>
+        <jointName>iris::rotor_0_joint</jointName>
+        <multiplier>838</multiplier>
+        <controlVelocitySlowdownSim>1</controlVelocitySlowdownSim>
+      </control>
+      <control channel="1">
+        <type>VELOCITY</type>
+        <offset>0</offset>
+        <p_gain>0.20</p_gain>
+        <i_gain>0</i_gain>
+        <d_gain>0</d_gain>
+        <i_max>0</i_max>
+        <i_min>0</i_min>
+        <cmd_max>2.5</cmd_max>
+        <cmd_min>-2.5</cmd_min>
+        <jointName>iris::rotor_1_joint</jointName>
+        <multiplier>838</multiplier>
+        <controlVelocitySlowdownSim>1</controlVelocitySlowdownSim>
+      </control>
+      <control channel="2">
+        <type>VELOCITY</type>
+        <offset>0</offset>
+        <p_gain>0.20</p_gain>
+        <i_gain>0</i_gain>
+        <d_gain>0</d_gain>
+        <i_max>0</i_max>
+        <i_min>0</i_min>
+        <cmd_max>2.5</cmd_max>
+        <cmd_min>-2.5</cmd_min>
+        <jointName>iris::rotor_2_joint</jointName>
+        <multiplier>-838</multiplier>
+        <controlVelocitySlowdownSim>1</controlVelocitySlowdownSim>
+      </control>
+      <control channel="3">
+        <type>VELOCITY</type>
+        <offset>0</offset>
+        <p_gain>0.20</p_gain>
+        <i_gain>0</i_gain>
+        <d_gain>0</d_gain>
+        <i_max>0</i_max>
+        <i_min>0</i_min>
+        <cmd_max>2.5</cmd_max>
+        <cmd_min>-2.5</cmd_min>
+        <jointName>iris::rotor_3_joint</jointName>
+        <multiplier>-838</multiplier>
+        <controlVelocitySlowdownSim>1</controlVelocitySlowdownSim>
+      </control>
+    </plugin>
+
+  </model>
+</sdf>

@@ -1,0 +1,26 @@
+description: This is a sample joystick definition.
+match:
+  - 'Horizon Hobby SPEKTRUM RECEIVER'
+controls:
+
+  # map axis id 2 to rc channel 1
+  - channel: 1
+    type: axis
+    id: 2
+
+  # map axis id 3 to rc channel 2
+  - channel: 2
+    type: axis
+    id: 3
+
+  # map axis id 1 to rc channel 3
+  - channel: 3
+    type: axis
+    id: 1
+    invert: true
+
+  # map axis id 0 to rc channel 4
+  - channel: 4
+    type: axis
+    id: 0
+
