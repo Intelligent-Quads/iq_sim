@@ -1,0 +1,4 @@
+                    "gazebo-quadplane": {
+                        "waf_target": "bin/arduplane",
+                        "default_params_filename": "default_params/gazebo_quadplane.parm",
+                    },
