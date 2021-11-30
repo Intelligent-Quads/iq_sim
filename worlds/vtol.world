@@ -90,9 +90,9 @@
       <uri>model://sun</uri>
     </include>
 
-    <model name="iris">
+    <model name="vtol">
       <include>
-        <uri>model://drone_with_camera</uri>
+        <uri>model://standard_vtol</uri>
       </include>
       <pose> 0 0 0 0 0 0</pose>
     </model>
