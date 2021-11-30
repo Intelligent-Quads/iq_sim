@@ -62,6 +62,8 @@ For more information, take a look at the corresponding tutorials [here](https://
 
 Quad Planes are a vtol aircraft that uses quadcopter controls in hover and airplane controls in forward flight. 
 
+![vtol pic](docs/imgs/vtol_sim.png)
+
 ### Setup 
 
 In order to use the gazebo quad plane sim a few files needed to be modified in ardupilot the first is to add the following to the file `ardupilot/Tools/autotest/pysim/vehicleinfo.py` on line 274. this should be within the Arduplane structure. 
