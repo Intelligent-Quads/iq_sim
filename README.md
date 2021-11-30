@@ -2,6 +2,12 @@
 
 This repo hosts gazebo worlds for various drone scenarios and various drone configurations. This Repo is specifically designed to work with the Ardupilot control system, and utilizes the ardupilot gazebo plugin to allow the ardupilot control software to interface and control the model drone in gazebo. 
 
+## Vehicles Supported 
+
+- [Quadcopters](#drone-simulations)
+- [Quad-Planes](#quad-planes)
+- [Boats](#boat-simulation)
+
 ## Community Discord Server
 
 Come be a part of the growing community of drone application developers! Join the conversation in our [discord](https://discord.gg/xZjXaAf).
@@ -51,6 +57,37 @@ Launch the ardupilot instance by running
 cd ~/ardupilot/ArduCopter/ && sim_vehicle.py -v ArduCopter -f gazebo-iris --console
 ``` 
 For more information, take a look at the corresponding tutorials [here](https://github.com/Intelligent-Quads/iq_tutorials)
+
+## Quad Planes 
+
+Quad Planes are a vtol aircraft that uses quadcopter controls in hover and airplane controls in forward flight. 
+
+### Setup 
+
+In order to use the gazebo quad plane sim a few files needed to be modified in ardupilot the first is to add the following to the file `ardupilot/Tools/autotest/pysim/vehicleinfo.py` on line 274. this should be within the Arduplane structure. 
+
+```
+"gazebo-quadplane": {
+    "waf_target": "bin/arduplane",
+    "default_params_filename": "default_params/gazebo_quadplane.parm",
+},
+```
+
+copy the file `iq_sim/scripts/vtol-params/gazebo_quadplane.parm` to `ardupilot/Tools/autotest/default_params/gazebo_quadplane.parm`
+
+### Running VTOL sim
+
+## Run Boat Sim 
+
+First terminal 
+```
+roslaunch iq_sim vtol.launch
+```
+Second terminal
+```
+sim_vehicle.py -v ArduPlane -f gazebo-quadplane  -m --mav10 --console -I0
+```
+
 
 ## Boat Simulation
 
