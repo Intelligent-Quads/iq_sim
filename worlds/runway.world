@@ -1,4 +1,4 @@
-<?xml version="1.0"?> 
+<?xml version="1.0"?>
 <sdf version="1.5">
   <world name="default">
     <physics type="ode">
@@ -20,13 +20,13 @@
     </physics>
 
     <scene>
-      <sky>
+      <!-- <sky>
         <clouds>
           <speed>12</speed>
         </clouds>
-      </sky>
-      <ambient>0.4 0.4 0.4 1</ambient>
-      <background>0.25 0.25 0.25 1</background>
+      </sky> -->
+      <ambient>0.25 0.25 0.25 1</ambient>
+      <background>0.4 0.8 0.9 1</background>
     </scene>
 
 
@@ -98,4 +98,3 @@
     </model>
   </world>
 </sdf>
-
