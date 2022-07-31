@@ -15,8 +15,8 @@
           <contact_surface_layer>0.0</contact_surface_layer>
         </constraints>
       </ode>
-      <real_time_update_rate>1000</real_time_update_rate>
-      <max_step_size>0.0010</max_step_size>
+      <real_time_update_rate>-1</real_time_update_rate>
+      <!-- <max_step_size>0.0010</max_step_size> -->
     </physics>
 
     <scene>
@@ -92,7 +92,7 @@
 
     <model name="iris">
       <include>
-        <uri>model://drone_with_camera</uri>
+        <uri>model://drone1</uri>
       </include>
       <pose> 0 0 0 0 0 0</pose>
     </model>

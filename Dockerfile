@@ -12,5 +12,6 @@ WORKDIR /iq_sim
 COPY . /iq_sim 
 
 ENV WORLD=droneOnly
+ENV GAZEBO_MODEL_DATABASE_URI="/"
 
 ENTRYPOINT gzserver --verbose worlds/${WORLD}.world
